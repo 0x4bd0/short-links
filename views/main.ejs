@@ -12,6 +12,23 @@
     <title>SHORT LINK</title>
 </head>
 <body>
+
+  <div class="preloader-background">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -28,7 +45,7 @@
         <h4 id="modalhead2" style="color:black;text-align: center">:)</h4>
       </div>
       <div class="modal-footer">
-        <a href="#modal2" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        <a href="#modal2" id="close2" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
 
@@ -57,10 +74,23 @@
 
     <script>
     $(document).ready(function() {
+      $('.preloader-background').delay(500).fadeOut('slow');
+        
+        $('.preloader-wrapper')
+          .delay(500)
+          .fadeOut();
 
     $('.modal-trigger').leanModal()
 
     $("#urlinput").on('submit', function(e){
+
+      $('.preloader-background').fadeIn('slow');
+        
+        $('.preloader-wrapper')
+          .fadeIn();
+
+
+      $('#url').prop("disabled", true);
 
     e.preventDefault()
 
@@ -71,12 +101,26 @@
         'url' : $('#url').val()
     }
   }).then(data=>{
-    $('#modalhead2').text(window.location.origin+'/'+data.output)
+    
+    $('.preloader-background').fadeOut('slow')
+        
+        $('.preloader-wrapper')
+          .fadeOut();
 
-    $('#modal2').slideDown()
+
+          setTimeout(function(){
+            $('#modalhead2').text(window.location.origin+'/'+data.output)
+
+            $('#modal2').slideDown()
+           }, 500);
+
   })
 
     });
+
+    $('#close2').on('click',function(e){
+      $('#modal2').fadeOut()
+    })
 
     });
     </script>
