@@ -2,8 +2,19 @@ const express = require( 'express' )
 const router = express.Router()
 const { check, validationResult } = require( 'express-validator' )
 const Url = require('../models/urls')
+const rsg = require('randomstringsgenerator')
+
 
 const prefix = 'url'
+
+
+const generateUniqueString = async() => {
+	let tmp = await rsg(5,['numbers','upperCase','lowerCase','specialChars'])
+	if(await Url.findOne({output})){
+		await generateUniqueString()
+	}
+	return tmp
+}
 
 router.post(
 	`/${ prefix }`,
@@ -22,7 +33,8 @@ router.post(
 		}
 
 		let data = new Url({
-        input : req.body.url
+		input : req.body.url,
+		output : await agenerateUniqueString()
 		})
 		
 		return res.send(await data.save())
