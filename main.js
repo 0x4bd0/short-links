@@ -1,12 +1,10 @@
 const express = require('express')
 const magic = express()
-const router = express.Router()
 const mongoose = require('mongoose')
 const su = require('./models/urls')
-const URL =require('./controllers/main')
+const routes = require('./router/main')
 require('dotenv').config()
 
-router.use(URL);
 
 mongoose.connect(process.env.DB_URL,{
     useNewUrlParser : true,
@@ -21,5 +19,6 @@ magic.listen(process.env.PORT,()=>{
     console.log('🏃 up and running 🏃')
 })
 
+magic.use('/', routes)
 
 magic.get('/',(req,res)=>res.render('main'))
