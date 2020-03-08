@@ -4,7 +4,7 @@
   "description": "small node.js project",
   "main": "main.js",
   "scripts": {
-    "start:dev": "nodemon main.js"
+    "start": "nodemon main.js"
   },
   "repository": {
     "type": "git",
