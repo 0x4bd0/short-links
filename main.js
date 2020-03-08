@@ -4,10 +4,11 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 
-mongoose.connect(process.env.DB_URLN{
+mongoose.connect(process.env.DB_URL,{
     useNewUrlParser : true,
     useUnifiedTopology : true
 })
+
 magic.set('view engine','ejs')
 
 magic.use(express.static(__dirname + '/public'));
