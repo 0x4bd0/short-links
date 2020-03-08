@@ -42,5 +42,21 @@ router.post(
 	}
 )
 
+router.get(
+	`/:output`,
+	async ( req, res ) => {
+
+		let data = await Url.findOne({'output':req.param.output})
+
+		if(data){
+			return res.redirect(data.input)
+		} else {
+			return res.status(400).send('URL NOT FOUND')
+		} 
+	
+	}
+)
+
+
 
 module.exports = router
