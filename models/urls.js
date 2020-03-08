@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const 
+const sd = require('shortid')
 
 const ulrSchema = new mongoose.Schema({
 input: {
@@ -8,6 +8,12 @@ input: {
 },
 output: {
     type:String,
-    required:true
+    required:true,
+    default: () => sd.generate
+},
+createdAt: {
+    default : new Date()
 }
 })
+
+module.exports = mongoose.model('Url',ulrSchema,'urls')
