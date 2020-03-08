@@ -9,7 +9,7 @@ input: {
 output: {
     type:String,
     required:true,
-    default: () => sd.generate
+    default: () => sd.generate()
 },
 createdAt: {
     type: Date,

@@ -22,7 +22,7 @@ router.post(
 		}
 
 		let data = new Url({
-        url : req.body.url
+        input : req.body.url
 		})
 		
 		return res.send(await data.save())
