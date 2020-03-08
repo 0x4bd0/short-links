@@ -23,7 +23,7 @@ magic.set('view engine','ejs')
 
 magic.use(express.static(__dirname + '/public'))
 
-magic.listen(process.env.PORT,()=>{
+magic.listen(process.env.PORT || 80,()=>{
     console.log('🏃 up and running 🏃')
 })
 
