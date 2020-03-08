@@ -9,6 +9,4 @@ magic.listen(process.env.PORT,()=>{
 })
 
 
-magic.get('/',(req,res)=>{
-    return res.render('main')
-})
+magic.get('/',(req,res)=>res.render('main'))
