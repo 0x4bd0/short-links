@@ -9,8 +9,8 @@ const prefix = 'url'
 
 
 const generateUniqueString = async() => {
-	let tmp = await rsg(5,['numbers','upperCase','lowerCase','specialChars'])
-	if(await Url.findOne({output})){
+	let tmp = await rsg(5,['numbers','upperCase','lowerCase'])
+	if(await Url.findOne({'output':tmp})){
 		await generateUniqueString()
 	}
 	return tmp
@@ -34,7 +34,7 @@ router.post(
 
 		let data = new Url({
 		input : req.body.url,
-		output : await agenerateUniqueString()
+		output : await generateUniqueString()
 		})
 		
 		return res.send(await data.save())

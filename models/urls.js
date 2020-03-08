@@ -8,8 +8,7 @@ input: {
 },
 output: {
     type:String,
-    required:true,
-    default: () => sd.generate()
+    required:true
 },
 createdAt: {
     type: Date,
