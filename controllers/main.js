@@ -1,6 +1,7 @@
 const express = require( 'express' )
 const router = express.Router()
 const { check, validationResult } = require( 'express-validator' )
+const Url = require('../models/urls')
 
 const prefix = 'url'
 
@@ -19,6 +20,12 @@ router.post(
 		if ( !validationErrors.isEmpty() ) {
 			return res.status( 422 ).json( { errors: validationErrors.array() } )
 		}
+
+		let data = new Url({
+        url : req.body.url
+		})
+		
+		return res.send(await data.save())
 
 	}
 )
