@@ -17,15 +17,21 @@
       <div class="modal-content">
         <h4 id="modalhead">Get your short URL in 1 sec :)</h4>
         <p id="modalbody">Insert web address in the search bar and press enter. <br>The short URL is returned with the long URL that was entered in the search bar.</p>
-        <hr class="red-text">
-        <br>
-        <i class="red-text lighten-1">this is a proof of concept.<br> The shortened URL is usually longer then the entered url because of free domain limitations.</i>
-        <br>
       </div>
       <div class="modal-footer">
         <a href="#modal1" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4 id="modalhead2" style="color:black;text-align: center">:)</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#modal2" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
     <button data-target="modal1" class='btn white btn-large modal-trigger' href="#modal1"><i class='fa fa-question'></i></button>
     <br>
     <h1 class="center-align">Little URL</h1>
@@ -52,11 +58,10 @@
     <script>
     $(document).ready(function() {
 
-    $('.modal-trigger').leanModal();
+    $('.modal-trigger').leanModal()
 
     $("#urlinput").on('submit', function(e){
 
-    console.log('ffs')
     e.preventDefault()
 
     $.ajax({
@@ -66,7 +71,9 @@
         'url' : $('#url').val()
     }
   }).then(data=>{
-    console.log(data)
+    $('#modalhead2').text(window.location.origin+'/'+data.output)
+
+    $('#modal2').slideDown()
   })
 
     });
