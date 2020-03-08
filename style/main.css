@@ -1,0 +1,36 @@
+body {
+    background-color: #2979ff;
+    color: white;
+  }
+  
+  .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    color: #2979ff;
+  }
+  
+  #modalhead {
+    color: #2979ff;
+  }
+  
+  #modalbody {
+    color: #000;
+  }
+  
+  #urlinput {
+    color: white;
+    background color: white;
+    width: 60%;
+    float: none;
+    margin: 0 auto;
+    border: none !important;
+  }
+  
+  #searchlabel {
+    color:white;
+  }
+  a{
+    color:white;
+  }

@@ -1,1 +1,42 @@
-suka beliat
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHORT LINK</title>
+</head>
+<body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4 id="modalhead">How To Use</h4>
+        <p id="modalbody">Insert web address in the search bar and press enter. <br>The short URL is returned with the long URL that was entered in the search bar.</p>
+        <hr class="red-text">
+        <br>
+        <i class="red-text lighten-1">this is a proof of concept.<br> The shortened URL is usually longer then the entered url because of free domain limitations.</i>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <a href="#modal1" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+    <button data-target="modal1" class='btn white btn-large modal-trigger' href="#modal1"><i class='fa fa-question'></i></button>
+    <br>
+    <h1 class="center-align">Little URL</h1>
+    <br>
+    <div id="bla">
+      <form id="urlinput" class="blue lighten-2 center-align">
+        <div class="input-field">
+          <input id="search" type="search" />
+          <label id="searchlabel" for="search"></label>
+        </div>
+      </form>
+    </div>
+    <br><br><br>
+    <div class="center-align">
+      <div id="long_url"></div>
+      <br>
+      <div id="short_url"></div>
+    </div>
+  </body>
+</html>
