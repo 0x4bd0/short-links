@@ -12,6 +12,7 @@ output: {
     default: () => sd.generate
 },
 createdAt: {
+    type: Date,
     default : new Date()
 }
 })
