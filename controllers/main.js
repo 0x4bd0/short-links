@@ -45,8 +45,9 @@ router.post(
 router.get(
 	`/:output`,
 	async ( req, res ) => {
+		console.log(req.params)
 
-		let data = await Url.findOne({'output':req.param.output})
+		let data = await Url.findOne({'output':req.params.output})
 
 		if(data){
 			return res.redirect(data.input)
