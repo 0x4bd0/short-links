@@ -34,3 +34,7 @@ body {
   a{
     color:white;
   }
+  
+  .center, .center-align {
+    text-align: center;
+}

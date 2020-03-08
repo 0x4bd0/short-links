@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style//main.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SHORT LINK</title>
 </head>
 <body>
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
       <div class="modal-content">
-        <h4 id="modalhead">How To Use</h4>
+        <h4 id="modalhead">Get your short URL in 1 sec :)</h4>
         <p id="modalbody">Insert web address in the search bar and press enter. <br>The short URL is returned with the long URL that was entered in the search bar.</p>
         <hr class="red-text">
         <br>
@@ -39,5 +44,35 @@
       <br>
       <div id="short_url"></div>
     </div>
-  </body>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+
+    <script>
+            $(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+
+    $(document).keypress(function(e) {
+        if (e.which == 13) {
+        event.preventDefault();
+        var searchstring = $('#search').val();
+        console.log(searchstring);
+        $.getJSON("http://crossorigin.me/http://tadake-littleurl.heroku.com/create/" + searchstring, function(data) {
+            
+            $("#long_url").empty();
+            $("#short_url").empty();
+            
+            console.log(data.little_url);
+            $("#long_url").append("<h5>Long Url  :  " + data.original_url + "</h5>");
+            console.log(data.original_url);
+            $("#short_url").append("<h5>Short Url :  <a href=" + data.little_url + " target='_blank'>" + data.little_url + "</a></h5>");
+        });
+        }
+    });
+
+    });
+    </script>
+</body>
 </html>
